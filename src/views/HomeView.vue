@@ -11,5 +11,6 @@
 <script setup>
 import Post from "@/components/Post.vue";
 import store from '@/store/index.js';
-
+store.dispatch('getPosts')
+// console.log('Home: ', store.state.post.postGroup)
 </script>

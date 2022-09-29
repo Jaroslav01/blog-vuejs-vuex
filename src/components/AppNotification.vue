@@ -9,11 +9,13 @@
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" />
+                <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" v-if="store.state.isNotificationType === 'Successfully'" />
+                <XMarkIcon class="h-6 w-6 text-red-400" aria-hidden="true" v-if="store.state.isNotificationType === 'Error'" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-gray-900">Successfully saved!</p>
-                <p class="mt-1 text-sm text-gray-500">Anyone with a link can now view this file.</p>
+                <p class="text-sm font-medium text-gray-900" v-if="store.state.isNotificationType === 'Successfully'">Successfully saved!</p>
+                <p class="text-sm font-medium text-gray-900" v-if="store.state.isNotificationType === 'Error'">Error!</p>
+                <p class="mt-1 text-sm text-gray-500">{{store.state.isNotificationText}}</p>
               </div>
               <div class="ml-4 flex flex-shrink-0">
                 <button type="button" @click="store.commit('hideNotification')" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

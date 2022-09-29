@@ -4,6 +4,8 @@ import post from '@/store/modules/post'
 export default createStore({
   state: {
     isNotification: false,
+    isNotificationText: '',
+    isNotificationType: 'Error',
     isNewPostModal: false,
   },
   getters: {
@@ -20,7 +22,13 @@ export default createStore({
     },
     hideNewPostModal (state) {
       state.isNewPostModal = false
-    }
+    },
+    setNotificationText (state, text) {
+      state.isNotificationText = text
+    },
+    setNotificationType (state, text) {
+      state.isNotificationType = text
+    },
   },
   actions: {
   },
