@@ -1,21 +1,13 @@
-import postApi from '@/api/post'
+import commentApi from '@/api/comment'
 export default {
     state: () => ({
-        postGroup: [],
-        postDetailed: {},
     }),
     mutations: {
-        setPostGroup(state, postGroup){
-            state.postGroup = postGroup
-        },
-        setPostDetailed(state, postDetailed){
-            state.postDetailed = postDetailed
-        },
     },
     actions: {
-        getPosts(context) {
+        getComments(context) {
             return new Promise(() => {
-                postApi.getPosts().then((response) => {
+                commentApi.getComments().then((response) => {
                     context.commit('setPostGroup', response.data)
                 })
                     .catch(reason => {
@@ -25,9 +17,9 @@ export default {
                     })
             })
         },
-        getPost(context, id) {
+        getComment(context, id) {
             return new Promise((resolve) => {
-                postApi.getPost(id).then((response) => {
+                commentApi.getComment(id).then((response) => {
                     context.commit('setPostDetailed', response.data)
                     resolve(response.data)
                 })
@@ -39,11 +31,11 @@ export default {
                     })
             })
         },
-        updatePost(context, post) {
+        updateComment(context, comment) {
             return new Promise((resolve) => {
-                postApi.updatePost(post).then((response) => {
+                commentApi.updateComment(comment).then((response) => {
                     context.dispatch('getPosts')
-                    context.commit('setNotificationText', 'Updated post #: ' + post.id)
+                    context.commit('setNotificationText', 'Updated comment #: ' + comment.id)
                     context.commit('setNotificationType', 'Successfully')
                     context.commit('showNotification')
                     resolve(response.data)
@@ -55,11 +47,11 @@ export default {
                     })
             })
         },
-        deletePost(context, post) {
+        deleteComment(context, comment) {
             return new Promise((resolve) => {
-                postApi.deletePost(post.id).then((response) => {
+                commentApi.deleteComment(comment.id).then((response) => {
                     context.dispatch('getPosts')
-                    context.commit('setNotificationText', 'Removed post: ' + post.title)
+                    context.commit('setNotificationText', 'Removed comment: ' + comment.content)
                     context.commit('setNotificationType', 'Successfully')
                     context.commit('showNotification')
                     resolve(response.data)
@@ -71,17 +63,17 @@ export default {
                     })
             })
         },
-        addPost(context, post) {
+        addComment(context, comment) {
             return new Promise((resolve) => {
-                postApi.addPost(post).then((response) => {
-                    context.commit('setNotificationText', 'Created by id: ' + response.data.id)
+                commentApi.addComment(comment).then((response) => {
+                    context.commit('setNotificationText', 'Comment added by id: ' + response.data.id)
                     context.commit('setNotificationType', 'Successfully')
                     context.commit('showNotification')
                     context.dispatch('getPosts')
                     resolve(response.data)
                 })
-                    .catch(reason => {
-                        context.commit('setNotificationText', reason.message)
+                    .catch(() => {
+                        context.commit('setNotificationText', 'Pole nie może być puste')
                         context.commit('setNotificationType', 'Error')
                         context.commit('showNotification')
                     })

@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import post from '@/store/modules/post'
+import comment from '@/store/modules/comment'
 
 export default createStore({
   state: {
@@ -33,6 +34,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    post: post
+    post: post,
+    comment: comment
   }
 })

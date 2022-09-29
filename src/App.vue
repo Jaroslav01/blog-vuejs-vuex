@@ -1,17 +1,17 @@
 <template>
-  <div class="min-w-max min-h-screen bg-slate-100 h-screen">
+  <div class="w-screen max-w-screen min-h-screen bg-slate-100 h-screen">
     <div class="flex flex-col justify-between h-screen">
-      <div>
+      <div class="md:min-h-full">
         <app-nav/>
 
         <router-view/>
       </div>
 
-      <app-footer></app-footer>
+      <app-footer class="mt-5"></app-footer>
     </div>
 
     <!-- Notification, Dialog components-->
-    <AppNotification></AppNotification>
+    <AppNotification class="z-[1000]"></AppNotification>
     <NewPostModal></NewPostModal>
   </div>
 </template>

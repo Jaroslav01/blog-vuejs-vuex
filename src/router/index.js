@@ -18,19 +18,18 @@ const routes = [
   {
     path: '/post',
     name: 'post',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/PostDetailsView.vue')
+    component: () => import('../views/PostDetailsView.vue')
   },
   {
-    path: '/new-post',
-    name: 'new-post',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../components/NewPost')
-  }
+    path: '/post-details/:id',
+    name: 'post-details',
+    component: () => import('../views/PostDetailsView')
+  },
+  {
+    path: '/page-not-found',
+    name: 'page-not-found',
+    component: () => import('../components/AppPageNotFounded')
+  },
 ]
 
 const router = createRouter({
