@@ -81,10 +81,10 @@ export default {
     }
   },
   methods: {
-    formatDate(value){
+    formatDate(value){ // funkcja potrzebna do zmiany formatu daty
       return  moment(String(value)).format('DD.MM.YYYY HH:mm')
     },
-    getPost(){
+    getPost(){ // Żądamy artykułu przez Vuex przechodzące Id artukula otrzymane z route ()
       store.dispatch('getPost', this.$route.params.id).then((response) => {
         // console.log('PostDetailsView: ', response)
         this.postDetailed = response

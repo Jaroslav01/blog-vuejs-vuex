@@ -1,4 +1,16 @@
-# blog
+Używane biblioteki: 
+- Vuex (To jest analog Redux z React Js)
+- Router 
+- moment
+- @heroicons
+- @headlessui/vue
+- chenfengyuan/vue-countdown
+
+## Interfejs wizualny jest zbudowany z css freamworkiem: Tailwind css
+https://tailwindcss.com/
+
+## Komponenty używane z TailwindUI
+https://tailwindui.com/components
 
 ## Project setup
 ```

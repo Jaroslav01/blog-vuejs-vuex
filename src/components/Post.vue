@@ -6,7 +6,7 @@
           <a class="hover:underline uppercase">{{ post.title }}</a>
         </p>
         <p class="text-sm text-gray-500">
-          <a class="hover:underline">{{ post.created_on }}</a>
+          <a class="hover:underline">{{ formatDate(post.created_on) }}</a>
         </p>
       </div>
       <div class="flex flex-shrink-0 self-center">
@@ -23,12 +23,17 @@
   </template>
   
   <script>
-
+import moment from "moment";
   export default {
     name: 'AppPost',
     props: {
       post: {}
     },
+    methods: {
+      formatDate(value){ // funkcja potrzebna do zmiany formatu daty
+        return  moment(String(value)).format('DD.MM.YYYY HH:mm')
+      },
+    }
   }
   </script>
 
